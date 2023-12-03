@@ -5,9 +5,8 @@ const input = fs.readFileSync('src/day2/input.txt', 'utf8').split('\n');
 function part1(input: string[]) {
 	let final = 0;
 	for (let i = 0; i < input.length; i++) {
-		let gameSplit = input[i].split(':');
-		let gameNumber = parseInt(gameSplit[0].substring(5));
-		let results = gameSplit[1].substring(1).replace('\r', '');
+		let gameSplit = input[i].split(': ');
+		let results = gameSplit[1].replace('\r', '');
 		let rounds = results.split('; ');
 		let skip = false;
 		let maxValues: Record<string, number> = {
@@ -29,7 +28,7 @@ function part1(input: string[]) {
 			if (skip) break;
 		}
 		if (!skip) {
-			final += gameNumber;
+			final += i + 1;
 		}
 	}
 	return final;
