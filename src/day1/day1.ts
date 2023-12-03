@@ -12,7 +12,6 @@ const testInput2 = [
 	'7pqrstsixteen'
 ];
 const alternates = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function part1(input: string[]) {
 	let final = 0;
@@ -80,7 +79,7 @@ function part2(input: string[]) {
 
 function hasSpelledNumber(input: string) {
 	for (let i = 0; i < alternates.length; i++) {
-		if (input.includes(alternates[i])) return values[i].toString();
+		if (input.includes(alternates[i])) return (i + 1).toString();
 	}
 }
 
