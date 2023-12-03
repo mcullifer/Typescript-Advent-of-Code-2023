@@ -42,9 +42,9 @@ function part2(input: string[]) {
 		let results = gameSplit[1].replace('\r', '');
 		let rounds = results.split('; ');
 		let maxValues: Record<string, number> = {
-			red: 0,
-			green: 0,
-			blue: 0
+			red: 1,
+			green: 1,
+			blue: 1
 		};
 		for (let j = 0; j < rounds.length; j++) {
 			let colorPairs = rounds[j].split(', ');
