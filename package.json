@@ -6,6 +6,7 @@
 	"scripts": {
 		"day1": "ts-node src/day1/day1.ts",
 		"day2": "ts-node src/day2/day2.ts",
+		"day3": "ts-node src/day3/day3.ts",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
