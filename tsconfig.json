@@ -4,7 +4,7 @@
 		"checkJs": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true,
+		"target": "ESNext",
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,

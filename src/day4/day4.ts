@@ -18,9 +18,11 @@ function parseInput(input: string) {
 	let splitNumbers = allNumbers.split(' | ');
 	let winning = splitNumbers[0].split(' ');
 	let mine = splitNumbers[1].split(' ');
-	let winningNumbers = parseNumbers(winning);
-	let myNumbers = parseNumbers(mine);
-	return { winningNumbers, myNumbers };
+	let w = parseNumbers(winning);
+	let m = parseNumbers(mine);
+	let winningNumbers = new Set(w);
+	let myNumbers = new Set(m);
+	return new Set([...winningNumbers].filter((x) => myNumbers.has(x)));
 }
 
 function parseCopies(scores: number[]) {
@@ -40,10 +42,9 @@ function parseCopies(scores: number[]) {
 function part1(input: string[]) {
 	let score = 0;
 	for (let i = 0; i < input.length; i++) {
-		let { winningNumbers, myNumbers } = parseInput(input[i]);
-		let intersection = winningNumbers.filter((x) => myNumbers.includes(x));
-		if (intersection.length == 0) continue;
-		score += Math.pow(2, intersection.length - 1);
+		let intersect = parseInput(input[i]);
+		if (intersect.size == 0) continue;
+		score += Math.pow(2, intersect.size - 1);
 	}
 	return score;
 }
@@ -51,9 +52,8 @@ function part1(input: string[]) {
 function part2(input: string[]) {
 	let scores: number[] = [];
 	for (let i = 0; i < input.length; i++) {
-		let { winningNumbers, myNumbers } = parseInput(input[i]);
-		let intersection = winningNumbers.filter((x) => myNumbers.includes(x));
-		scores.push(intersection.length);
+		let intersection = parseInput(input[i]);
+		scores.push(intersection.size);
 	}
 	let copies = parseCopies(scores);
 	return copies;
