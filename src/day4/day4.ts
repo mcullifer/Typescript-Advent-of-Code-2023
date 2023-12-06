@@ -54,13 +54,8 @@ function part2(input: string[]) {
 	let scores: number[] = [];
 	for (let i = 0; i < input.length; i++) {
 		let { winningNumbers, myNumbers } = parseInput(input[i]);
-		let matchingCount = 0;
-		for (let number of myNumbers) {
-			if (winningNumbers.includes(number)) {
-				matchingCount++;
-			}
-		}
-		scores.push(matchingCount);
+		let intersection = winningNumbers.filter((x) => myNumbers.includes(x));
+		scores.push(intersection.length);
 	}
 	let copies = parseCopies(scores);
 	return copies;
