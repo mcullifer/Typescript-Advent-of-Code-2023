@@ -27,11 +27,9 @@ function parseCopies(scores: number[]) {
 	let copyCounts: number[] = Array(scores.length).fill(1);
 	let copies = 0;
 	for (let i = 0; i < copyCounts.length; i++) {
-		for (let j = 0; j < copyCounts[i]; j++) {
-			for (let k = 1; k < scores[i] + 1; k++) {
-				if (i + k > copyCounts.length) break;
-				copyCounts[i + k] += 1;
-			}
+		for (let k = 1; k < scores[i] + 1; k++) {
+			if (i + k > copyCounts.length) break;
+			copyCounts[i + k] += copyCounts[i];
 		}
 		copies += copyCounts[i];
 	}
