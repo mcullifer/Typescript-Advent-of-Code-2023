@@ -13,6 +13,16 @@ function parseNumbers(input: string[]) {
 	return cleaned;
 }
 
+function parseInput(input: string) {
+	let allNumbers = input.split(': ')[1];
+	let splitNumbers = allNumbers.split(' | ');
+	let winning = splitNumbers[0].split(' ');
+	let mine = splitNumbers[1].split(' ');
+	let winningNumbers = parseNumbers(winning);
+	let myNumbers = parseNumbers(mine);
+	return { winningNumbers, myNumbers };
+}
+
 function parseCopies(scores: number[]) {
 	let copyCounts: number[] = Array(scores.length).fill(1);
 	let copies = 0;
@@ -32,12 +42,7 @@ function parseCopies(scores: number[]) {
 function part1(input: string[]) {
 	let score = 0;
 	for (let i = 0; i < input.length; i++) {
-		let allNumbers = input[i].split(': ')[1];
-		let splitNumbers = allNumbers.split(' | ');
-		let winning = splitNumbers[0].split(' ');
-		let mine = splitNumbers[1].split(' ');
-		let winningNumbers = parseNumbers(winning);
-		let myNumbers = parseNumbers(mine);
+		let { winningNumbers, myNumbers } = parseInput(input[i]);
 		let scoreForCard = 0;
 		for (let number of myNumbers) {
 			if (winningNumbers.includes(number)) {
@@ -56,12 +61,7 @@ function part1(input: string[]) {
 function part2(input: string[]) {
 	let scores: number[] = [];
 	for (let i = 0; i < input.length; i++) {
-		let allNumbers = input[i].split(': ')[1];
-		let splitNumbers = allNumbers.split(' | ');
-		let winning = splitNumbers[0].split(' ');
-		let mine = splitNumbers[1].split(' ');
-		let winningNumbers = parseNumbers(winning);
-		let myNumbers = parseNumbers(mine);
+		let { winningNumbers, myNumbers } = parseInput(input[i]);
 		let matchingCount = 0;
 		for (let number of myNumbers) {
 			if (winningNumbers.includes(number)) {
