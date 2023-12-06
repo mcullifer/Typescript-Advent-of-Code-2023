@@ -43,17 +43,9 @@ function part1(input: string[]) {
 	let score = 0;
 	for (let i = 0; i < input.length; i++) {
 		let { winningNumbers, myNumbers } = parseInput(input[i]);
-		let scoreForCard = 0;
-		for (let number of myNumbers) {
-			if (winningNumbers.includes(number)) {
-				if (scoreForCard === 0) {
-					scoreForCard = 1;
-				} else {
-					scoreForCard *= 2;
-				}
-			}
-		}
-		score += scoreForCard;
+		let intersection = winningNumbers.filter((x) => myNumbers.includes(x));
+		if (intersection.length == 0) continue;
+		score += Math.pow(2, intersection.length - 1);
 	}
 	return score;
 }
