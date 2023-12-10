@@ -1,16 +1,8 @@
-import fs from 'fs';
-const test = fs
-	.readFileSync('src/day8/test.txt', 'utf8')
-	.split('\n')
-	.map((x) => x.replace('\r', ''));
-const test2 = fs
-	.readFileSync('src/day8/test2.txt', 'utf8')
-	.split('\n')
-	.map((x) => x.replace('\r', ''));
-const input = fs
-	.readFileSync('src/day8/input.txt', 'utf8')
-	.split('\n')
-	.map((x) => x.replace('\r', ''));
+import { Reader } from '@/util/reader';
+
+const test = Reader.read(8, 'test');
+const test2 = Reader.read(8, 'test2');
+const input = Reader.read(8, 'input');
 
 let nodes = new Map<string, [string, string]>();
 let directions = '';
