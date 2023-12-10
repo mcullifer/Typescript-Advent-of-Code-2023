@@ -18,6 +18,24 @@ let startKeys: string[] = [];
 let endKeys: string[] = [];
 let foundKeyForIndex: number[] = [];
 
+function setup(input: string[]) {
+	nodes = new Map<string, [string, string]>();
+	startKeys = [];
+	endKeys = [];
+	for (let line of input) {
+		let split = line.split(' = ');
+		let key = split[0];
+		if (key.endsWith('A')) {
+			startKeys.push(key);
+		} else if (key.endsWith('Z')) {
+			endKeys.push(key);
+		}
+		let value = split[1].substring(1, split[1].length - 1);
+		let LR = value.split(', ');
+		nodes.set(key, [LR[0], LR[1]]);
+	}
+}
+
 function walkRecursive(
 	startKey: string,
 	directions: string,
@@ -74,13 +92,7 @@ function findLeastCommonMultiple(numbers: number[]) {
 function part1(input: string[]) {
 	directions = input[0];
 	input = input.slice(2);
-	for (let line of input) {
-		let split = line.split(' = ');
-		let key = split[0];
-		let value = split[1].substring(1, split[1].length - 1);
-		let LR = value.split(', ');
-		nodes.set(key, [LR[0], LR[1]]);
-	}
+	setup(input);
 	let steps = walkRecursive('AAA', directions, nodes);
 	return steps;
 }
@@ -88,22 +100,9 @@ function part1(input: string[]) {
 function part2(input: string[]) {
 	directions = input[0];
 	input = input.slice(2);
-	for (let line of input) {
-		let split = line.split(' = ');
-		let key = split[0];
-		if (key.endsWith('A')) {
-			startKeys.push(key);
-		} else if (key.endsWith('Z')) {
-			endKeys.push(key);
-		}
-		let value = split[1].substring(1, split[1].length - 1);
-		let LR = value.split(', ');
-		nodes.set(key, [LR[0], LR[1]]);
-	}
-
+	setup(input);
 	let steps = 0;
 	let zFound = false;
-	let currentKeys = startKeys;
 	foundKeyForIndex = new Array(startKeys.length).fill(0);
 	while (!zFound) {
 		for (let i = 0; i < directions.length; i++) {
@@ -111,7 +110,7 @@ function part2(input: string[]) {
 				break;
 			}
 			steps++;
-			walkInParallel(currentKeys, directions[i] == 'L' ? 0 : 1, steps);
+			walkInParallel(startKeys, directions[i] == 'L' ? 0 : 1, steps);
 			if (foundKeyForIndex.every((x) => x > 0)) {
 				zFound = true;
 			}
