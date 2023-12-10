@@ -12,6 +12,7 @@
 		"day6": "tsx src/day6/day6.ts",
 		"day7": "tsx src/day7/day7.ts",
 		"day8": "tsx src/day8/day8.ts",
+		"day9": "tsx src/day9/day9.ts",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
