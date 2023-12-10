@@ -4,14 +4,14 @@
 	"description": "Advent of Code 2023 solutions",
 	"main": "index.ts",
 	"scripts": {
-		"day1": "ts-node src/day1/day1.ts",
-		"day2": "ts-node src/day2/day2.ts",
-		"day3": "ts-node src/day3/day3.ts",
-		"day4": "ts-node src/day4/day4.ts",
-		"day5": "ts-node src/day5/day5.ts",
-		"day6": "ts-node src/day6/day6.ts",
-		"day7": "ts-node src/day7/day7.ts",
-		"day8": "ts-node src/day8/day8.ts",
+		"day1": "tsx src/day1/day1.ts",
+		"day2": "tsx src/day2/day2.ts",
+		"day3": "tsx src/day3/day3.ts",
+		"day4": "tsx src/day4/day4.ts",
+		"day5": "tsx src/day5/day5.ts",
+		"day6": "tsx src/day6/day6.ts",
+		"day7": "tsx src/day7/day7.ts",
+		"day8": "tsx src/day8/day8.ts",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -26,7 +26,7 @@
 	"homepage": "https://github.com/mcullifer/Typescript-Advent-of-Code-2023#readme",
 	"dependencies": {
 		"prettier": "^3.1.0",
-		"ts-node": "^10.9.1",
+		"tsx": "^4.6.2",
 		"typescript": "^5.3.2"
 	},
 	"devDependencies": {
